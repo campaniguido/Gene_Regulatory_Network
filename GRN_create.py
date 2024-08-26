@@ -10,7 +10,7 @@ import sys
 #path_results = '/Users/ieo6943/Downloads/'
 #path_genes = '/Users/ieo6943/Downloads/genes.csv'
 
-path_h5ad = '/hpcnfs/scratch/PGP/acossa/breast_albi/MDA/single_cell/scripts/GRNs'
+path_h5ad = '/hpcnfs/data/PGP/acossa/archive_Cellula/MDA_chemo/data/SCT/clustered.h5ad'
 path_results = '/hpcnfs/scratch/PGP/gcampani/ALBI/GRN/'
 path_genes = '/hpcnfs/scratch/PGP/acossa/breast_albi/MDA/single_cell/scripts/GRNs/genes.csv'
 
