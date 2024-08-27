@@ -12,9 +12,9 @@ import sys
 #path_h5ad = '/Users/ieo6943/Documents/Guido/Albi/clustered.h5ad/MDA_chemo/data/SCT/clustered.h5ad'
 #path_results = '/Users/ieo6943/Downloads/'
 #path_genes = '/Users/ieo6943/Downloads/genes.csv'
-#origin = 'PT'
-#treatment = 'treated'
-#nthreads = 5
+origin = 'PT'
+treatment = 'treated'
+nthreads = int(15)
 
 path_h5ad = '/hpcnfs/data/PGP/acossa/archive_Cellula/MDA_chemo/data/SCT/clustered.h5ad'
 path_results = '/hpcnfs/scratch/PGP/gcampani/ALBI/GRN/'
@@ -43,6 +43,7 @@ expression_data = pd.DataFrame(adata_NT.X.toarray(), index=adata_NT.obs_names, c
 #    np.savetxt(os.path.join(path_results, f'corr_{origin}_{treatment}.csv'), correlation_matrix, delimiter=',')
 
 #  GENIE3 
+print(nthreads,'<-cores')
 if type_GRN=='GRN':
     grn_matrix = GENIE3(expression_data.values, nthreads=nthreads)
     np.savetxt(os.path.join(path_results, f'GRN_{origin}_{treatment}.csv'), grn_matrix, delimiter=',')
