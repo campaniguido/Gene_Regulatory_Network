@@ -23,7 +23,7 @@ path_genes = '/hpcnfs/scratch/PGP/acossa/breast_albi/MDA/single_cell/scripts/GRN
 origin = sys.argv[1]
 treatment = sys.argv[2]
 nthreads = sys.argv[3]
-type_GRN = sys.argv[3]
+type_GRN = sys.argv[4]
 
 os.makedirs(path_results, exist_ok=True)
 
