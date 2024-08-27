@@ -6,7 +6,7 @@ from GENIE3 import GENIE3
 import umap
 import matplotlib.pyplot as plt
 import sys
-import dask.dataframe as dd
+#import dask.dataframe as dd
 
 
 #path_h5ad = '/Users/ieo6943/Documents/Guido/Albi/clustered.h5ad/MDA_chemo/data/SCT/clustered.h5ad'
@@ -35,12 +35,12 @@ adata_NT = cluster_h5ad[:, cluster_h5ad.var_names.isin(genes)]
 expression_data = pd.DataFrame(adata_NT.X.toarray(), index=adata_NT.obs_names, columns=adata_NT.var_names)
 
 #Corr matrix
-if type_GRN=='corr':
-    #corr_expression_data = expression_data.corr()
-    # Converti il DataFrame Pandas in un DataFrame Dask
-    ddf = dd.from_pandas(expression_data, npartitions=nthreads)
-    correlation_matrix = ddf.corr().compute()
-    np.savetxt(os.path.join(path_results, f'corr_{origin}_{treatment}.csv'), correlation_matrix, delimiter=',')
+#if type_GRN=='corr':
+#    #corr_expression_data = expression_data.corr()
+#    # Converti il DataFrame Pandas in un DataFrame Dask
+#    ddf = dd.from_pandas(expression_data, npartitions=nthreads)
+#    correlation_matrix = ddf.corr().compute()
+#    np.savetxt(os.path.join(path_results, f'corr_{origin}_{treatment}.csv'), correlation_matrix, delimiter=',')
 
 #  GENIE3 
 if type_GRN=='GRN':
