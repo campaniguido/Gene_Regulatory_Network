@@ -12,9 +12,6 @@ import sys
 #path_h5ad = '/Users/ieo6943/Documents/Guido/Albi/clustered.h5ad/MDA_chemo/data/SCT/clustered.h5ad'
 #path_results = '/Users/ieo6943/Downloads/'
 #path_genes = '/Users/ieo6943/Downloads/genes.csv'
-origin = 'PT'
-treatment = 'treated'
-nthreads = int(15)
 
 path_h5ad = '/hpcnfs/data/PGP/acossa/archive_Cellula/MDA_chemo/data/SCT/clustered.h5ad'
 path_results = '/hpcnfs/scratch/PGP/gcampani/ALBI/GRN/'
@@ -24,6 +21,10 @@ origin = sys.argv[1]
 treatment = sys.argv[2]
 nthreads = sys.argv[3]
 type_GRN = sys.argv[4]
+
+origin = 'PT'
+treatment = 'treated'
+nthreads = int(15)
 
 os.makedirs(path_results, exist_ok=True)
 
@@ -44,6 +45,8 @@ expression_data = pd.DataFrame(adata_NT.X.toarray(), index=adata_NT.obs_names, c
 
 #  GENIE3 
 print(nthreads,'<-cores')
+print ('type nthreads:', nthreads)
+
 if type_GRN=='GRN':
     grn_matrix = GENIE3(expression_data.values, nthreads=nthreads)
     np.savetxt(os.path.join(path_results, f'GRN_{origin}_{treatment}.csv'), grn_matrix, delimiter=',')
