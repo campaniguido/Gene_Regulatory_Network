@@ -35,8 +35,8 @@ treatment = sys.argv[2]
 nthreads = int(sys.argv[3])
 type_GRN = sys.argv[4]
 
-origin = 'PT'
-treatment = 'treated'
+#origin = 'PT'
+#treatment = 'treated'
 nthreads = int(20)
 
 os.makedirs(path_results, exist_ok=True)
