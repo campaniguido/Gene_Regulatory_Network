@@ -35,8 +35,8 @@ treatment = sys.argv[2]
 nthreads = int(sys.argv[3])
 type_GRN = sys.argv[4]
 
-#origin = 'PT'
-#treatment = 'treated'
+origin = 'PT'
+treatment = 'treated'
 nthreads = int(20)
 
 os.makedirs(path_results, exist_ok=True)
@@ -48,7 +48,7 @@ log_resources("after ANNdata")
 genes = list(pd.read_csv(path_genes, index_col=0).index)
 
 adata_NT = cluster_h5ad[cluster_h5ad.obs['condition']==f'{origin}, {treatment}']
-adata_NT = cluster_h5ad[:, cluster_h5ad.var_names.isin(genes)]
+adata_NT = adata_NT[:, adata_NT.var_names.isin(genes)]
 expression_data = pd.DataFrame(adata_NT.X.toarray(), index=adata_NT.obs_names, columns=adata_NT.var_names)
 
 cluster_h5ad.obs['condition'].unique()
