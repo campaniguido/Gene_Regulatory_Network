@@ -50,8 +50,8 @@ genes = list(pd.read_csv(path_genes, index_col=0).index)
 adata_NT = cluster_h5ad[cluster_h5ad.obs['condition']==f'{origin}, {treatment}']
 adata_NT = adata_NT[:, adata_NT.var_names.isin(genes)]
 expression_data = pd.DataFrame(adata_NT.X.toarray(), index=adata_NT.obs_names, columns=adata_NT.var_names)
+expression_data_sample = expression_data.sample(n=1000, random_state=42)
 
-cluster_h5ad.obs['condition'].unique()
 #Corr matrix
 #if type_GRN=='corr':
 #    #corr_expression_data = expression_data.corr()
@@ -66,8 +66,8 @@ print ('type nthreads:', nthreads)
 
 log_resources("before Network")
 if type_GRN=='GRN':
-    grn_matrix = GENIE3(expression_data.values, nthreads=nthreads)
-    np.savetxt(os.path.join(path_results, f'GRN_{origin}_{treatment}.csv'), grn_matrix, delimiter=',')
+    grn_matrix = GENIE3(expression_data_sample.values, nthreads=nthreads)
+    np.savetxt(os.path.join(path_results, f'GRN_{origin}_{treatment}_1000_sample.csv'), grn_matrix, delimiter=',')
 log_resources("After Network")
 
 
