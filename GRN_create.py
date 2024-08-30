@@ -35,10 +35,10 @@ treatment = sys.argv[2]
 nthreads = int(sys.argv[3])
 type_GRN = sys.argv[4]
 
-origin = 'PT'
-treatment = 'untreated'
+#origin = 'PT'
+#treatment = 'untreated'
 nthreads = int(20)
-size_subset = 1000
+size_subset = 800
 
 #path_results = f'/Users/ieo6943/Documents/Guido/Albi/data_my_GRN/{size_subset}'
 os.makedirs(path_results, exist_ok=True)
